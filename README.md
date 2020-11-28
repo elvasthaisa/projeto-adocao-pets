@@ -1,6 +1,6 @@
 # Projeto Final da {Reprograma}: AnjoAumigo 
 
-    O presente projeto é referente ao Bootcamp Back-End da Reprograma em parceria com o Porto Digital MINAS e tem como objetivo aplicar todo o conhecimento obtido através do curso.
+O presente projeto é referente ao Bootcamp Back-End da Reprograma em parceria com o Porto Digital MINAS e tem como objetivo aplicar todo o conhecimento obtido através do curso.
 
 ### Motivação do tema escolhido
 - Durante a pandemia, vi crescer o número de pets em estado de abandono e a procura de pessoas dispostas a adotá-los. Pesquisando a respeito, descobri que a OMS estima que haja no Brasil cerca de 30 milhões de animais abandonados, sendo 10 milhões de gatos e 20 milhões de cachorros. Com a crise econômica durante o COVID-19, ainda mais animais foram abandonados por falta de suporte financeiro de seus tutores.
