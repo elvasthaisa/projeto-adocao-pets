@@ -1,0 +1,21 @@
+{
+  "name": "Projeto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "mongoose": "^5.10.17",
+    "save-dev": "0.0.1-security"
+  }
+}
