@@ -5,11 +5,11 @@ const anjosSchema = new mongoose.Schema({
     dataNascimento: { type: String, required: true },
     email : { type: String, required: true },
     telefone : { type: String },
-    endereco : { type: String },
+    endereco : { type: String, required: true },
+    tipoPet : { type: Number, required: true },
     porte : { type: String },
     raca : { type: String },
-    pelagem : { type: String },
-    tipoPet : { type: Number }
+    pelagem : { type: String }
 }, {
     versionKey: false,
 })
