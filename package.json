@@ -15,7 +15,11 @@
     "nodemon": "^2.0.6"
   },
   "dependencies": {
+    "dotenv-safe": "^8.2.0",
     "mongoose": "^5.10.17",
     "save-dev": "0.0.1-security"
+  },
+  "engines": {
+    "node": "v14.15.0"
   }
 }

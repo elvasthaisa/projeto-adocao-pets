@@ -16,15 +16,15 @@ Haverá duas entidades (schemas) na inserção de dados:
 
 ### Rotas 
 
-| Método   | Rota          | Função  |
+| Método   |  Rota        | Função  |
 |:--------:|:-------------| ------- |
 | GET | /anjos | Lista todos os anjos com interesse para adotar |
 | GET | /pets | Lista todos os pets disponíveis a adoção |
 | POST | /anjos | Cadastra um novo anjo com interesse para adotar |
 | POST | /pets | Cadastra um novo pet para adoção |
-| PUT | /anjos/angels?nome=Name&email=name@gmail.com | Permite alteração de informações sobre o anjo |
+| PUT | /anjos/user?nome=Name&email=name@gmail.com | Permite alteração de informações sobre o anjo |
 | PUT | /pets/pets?nome=Name&tipoPet=cachorro | Permite alteração de informações sobre o pet |
-| DELETE | /anjos/angels?nome=Name&email=name@gmail.com | Permite deletar informações sobre o anjo |
+| DELETE | /anjos/user?nome=Name&email=name@gmail.com | Permite deletar informações sobre o anjo |
 | DELETE | /pets/pets?nome=Name&tipoPet=cachorro | Permite deletar informações sobre o pet |
 
 
