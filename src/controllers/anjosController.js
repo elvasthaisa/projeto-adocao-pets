@@ -1,6 +1,6 @@
 const anjos = require('../models/anjos');
 
-const getAll = (req, res) => {
+const getAllAngels = (req, res) => {
     anjos.find(function(err, anjo) {
         if(err) {
             return res.status(424).send({ message: err.message })
@@ -65,7 +65,7 @@ const deleteAngel = (req, res) => {
 }
 
 module.exports = {
-    getAll,
+    getAllAngels,
     getAngelByName,
     createAngel,
     updateAngel,

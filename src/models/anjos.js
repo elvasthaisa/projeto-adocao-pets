@@ -6,7 +6,7 @@ const anjosSchema = new mongoose.Schema({
     email : { type: String, required: true },
     telefone : { type: String },
     endereco : { type: String, required: true },
-    tipoPet : { type: Number, required: true },
+    tipoPet : { type: String, required: true },
     porte : { type: String },
     raca : { type: String },
     pelagem : { type: String }
