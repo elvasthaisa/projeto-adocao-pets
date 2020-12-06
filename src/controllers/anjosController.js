@@ -1,6 +1,6 @@
 const anjos = require('../models/anjos');
 
-const readAll = (req, res) => {
+const getAll = (req, res) => {
     anjos.find(function(err, anjo) {
         if(err) {
             return res.status(424).send({ message: err.message })
@@ -9,13 +9,13 @@ const readAll = (req, res) => {
     })
 }
 
-const readAngelByName = (req, res) => {
+const getAngelByName = (req, res) => {
     const name = req.query.name;
     const email = req.query.email;
     console.log(name)
 
     if(name) {
-        anjos.find({nome: name, email: email}, (err, anjo) => {
+        anjos.find({nome: name, email: email}, { _id: 0 }, (err, anjo) => {
             if (err) {
                 return res.status(404).send("Não existe anjo cadastrado com esse nome")
             } 
@@ -40,9 +40,9 @@ const updateAngel = (req, res) => {
     console.log(name)
     console.log(email)
 
-    anjos.find({nome: name, email: email}), (err, anjo) => {
+    anjos.find({nome: name, email: email}), (err) => {
         if(anjo.length > 0) {
-            tarefas.updateMany({ name }, { $set: req.body }, (err) => {
+            tarefas.updateOne({ name }, { $set: req.body }, (err, anjo) => {
                 if (err) {
                     return res.status(424).send({ message: err.message })
                 }
@@ -54,12 +54,20 @@ const updateAngel = (req, res) => {
 }
 
 const deleteAngel = (req, res) => {
+    const name = req.params.name;
+    const email = req.params.email;
 
+    anjos.deleteOne({ nome: name, email: email }, (err, anjo) => {
+        if (err) {
+            return res.status(424).send({ message: err.message });
+        }
+        return res.status(200).send(anjo)
+    })
 }
 
 module.exports = {
-    readAll,
-    readAngelByName,
+    getAll,
+    getAngelByName,
     createAngel,
     updateAngel,
     deleteAngel

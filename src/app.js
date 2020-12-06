@@ -13,9 +13,7 @@ mongoose.connect(`${process.env.MONGODB_URL}`, {
 let db = mongoose.connection;
 
 db.on("error", console.log.bind(console, "connection error:"))
-db.once("open", function () {
-    console.log("conexão feita com sucesso.")
-})
+db.once("open", () => console.log("Conexão feita com sucesso."))
 
 const anjos = require("./routes/anjosRoute");
 
