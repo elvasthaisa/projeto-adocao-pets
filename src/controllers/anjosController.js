@@ -37,20 +37,19 @@ const createAngel = (req, res) => {
 const updateAngel = (req, res) => {
     const name = req.query.name;
     const email = req.query.email;
-    console.log(name)
-    console.log(email)
 
-    anjos.find({nome: name, email: email}), (err) => {
+    anjos.find({nome: name, email: email}, (err, anjo) => {
         if(anjo.length > 0) {
-            tarefas.updateOne({ name }, { $set: req.body }, (err, anjo) => {
+            anjos.updateOne({ nome: name, email: email }, { $set: req.body }, (err) => {
                 if (err) {
                     return res.status(424).send({ message: err.message })
                 }
                 return res.status(200).send('As informações do anjo foram alteradas')
             })
+        } else {
+            return res.status(200).send({ message: "Não há registros a serem atualizados para esse usuário"})
         }
-        return res.status(200).send({ message: "Não há registros a serem atualizados para esse usuário"})
-    }
+    })
 }
 
 const deleteAngel = (req, res) => {
