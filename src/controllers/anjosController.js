@@ -46,7 +46,7 @@ const updateAngel = (req, res) => {
                 if (err) {
                     return res.status(424).send({ message: err.message })
                 }
-                return res.status(200).send(anjo)
+                return res.status(200).send('As informações do anjo foram alteradas')
             })
         }
         return res.status(200).send({ message: "Não há registros a serem atualizados para esse usuário"})
@@ -54,14 +54,14 @@ const updateAngel = (req, res) => {
 }
 
 const deleteAngel = (req, res) => {
-    const name = req.params.name;
-    const email = req.params.email;
+    const name = req.query.name;
+    const email = req.query.email;
 
     anjos.deleteOne({ nome: name, email: email }, (err, anjo) => {
         if (err) {
             return res.status(424).send({ message: err.message });
         }
-        return res.status(200).send(anjo)
+        return res.status(200).send('As informações do anjo foram deletadas')
     })
 }
 
