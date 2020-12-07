@@ -47,7 +47,7 @@ const updateAngel = (req, res) => {
                 return res.status(200).send('As informações do anjo foram alteradas')
             })
         } else {
-            return res.status(200).send({ message: "Não há registros a serem atualizados para esse usuário"})
+            return res.status(200).send("Não há registros a serem atualizados para esse usuário")
         }
     })
 }

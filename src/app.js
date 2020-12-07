@@ -15,6 +15,7 @@ db.on("error", console.log.bind(console, "connection error:"))
 db.once("open", () => console.log("Conexão feita com sucesso."))
 
 const anjos = require("./routes/anjosRoute");
+const pets = require("./routes/petsRoute");
 
 app.use(express.json());
 
@@ -28,5 +29,6 @@ app.use((req, res, next) => {
 })
 
 app.use('/anjos', anjos);
+app.use('/pets', pets);
 
 module.exports = app;

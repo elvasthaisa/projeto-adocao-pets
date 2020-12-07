@@ -5,6 +5,8 @@ const petsSchema = new mongoose.Schema({
     nome : { type: String, required: true },
     idade : { type: String, required: true },
     porte : { type: String },
+    sexo : { type: String },
+    cor : { type: String },
     raca : { type: String },
     pelagem : { type: String },
     tutorTemporario : { type: String, required: true },
@@ -12,7 +14,7 @@ const petsSchema = new mongoose.Schema({
     telefoneTutor : { type: String, required: true },
     enderecoTutor : { type: String, required: true }
 }, {
-    versionKey = false,
+    versionKey: false,
 })
 
 const pets = mongoose.model('pets', petsSchema);
