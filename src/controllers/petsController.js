@@ -57,10 +57,10 @@ const updatePet = (req, res) => {
                 if (err) {
                     return res.status(424).send({ message: err.message })
                 }
-                return res.status(200).send('As informações do pet foram alteradas')
+                return res.status(200).send('Não há registros a serem atualizados para esse usuário')
             })
         }
-        return res.status(200).send("Não há registros a serem atualizados para esse usuário") 
+        return res.status(200).send("As informações do pet foram alteradas") 
     })
 }
 
@@ -68,7 +68,7 @@ const deletePet = (req, res) => {
     const petName = req.query.name;
     const tutorName = req.query.tutor;
 
-    pets.deleteOne({ nome: petName, tutorTemporario: tutorName }, (err, pet) => {
+    pets.deleteOne({ nome: name, email: email }, (err, pet) => {
         if (err) {
             return res.status(424).send({ message: err.message });
         }
