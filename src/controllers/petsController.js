@@ -64,9 +64,22 @@ const updatePet = (req, res) => {
     })
 }
 
+const deletePet = (req, res) => {
+    const petName = req.query.name;
+    const tutorName = req.query.tutor;
+
+    pets.deleteOne({ nome: petName, tutorTemporario: tutorName }, (err, pet) => {
+        if (err) {
+            return res.status(424).send({ message: err.message });
+        }
+        return res.status(200).send('As informações do pet foram deletadas');
+    })
+}
+
 module.exports = {
     getAllPets,
     getPetByName,
     createPet,
-    updatePet
+    updatePet,
+    deletePet
 }
