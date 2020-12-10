@@ -13,14 +13,32 @@ const getPetByName = (req, res) => {
     const petName = req.query.name;
     const tutorName = req.query.tutor;
 
-    pets.find({ nome: petName, tutorTemporario: tutorName }, { _id: 0 }, (err, pet) => {
-        if (pet.length > 0) {
+    const invalidateName = pets.find({ nome: petName }, { $not: {is_agent: {$eq: true}}});
+    const invalidateTutor = pets.find({ tutorTemporario: tutorName }, { $not: {is_agent: {$eq: true}}});
+
+    const typeName = typeof invalidateName;
+    const typeTutor = typeof invalidateTutor;
+
+    if (typeName == "object") {
+        console.log("não existe pet")
+        return res.status(404).send("Não existe pet cadastrado com esse nome")
+    } 
+
+    if (typeTutor == "object") {
+        console.log("não existe tutor")
+        return res.status(404).send("Não existe pet cadastrado com esse tutor cadastrado")
+    }  
+
+    if (!invalidateName && !invalidateTutor) {
+        console.log("nome do pet e tutor validos")
+        pets.find({ nome: petName, tutorTemporario: tutorName}, { _id: 0 }, (err, pet) => {
             if (err) {
-                return res.status(424).send("Não foi possível encontrar o pet")
-            } 
-            return res.status(200).send(pet)
-        }
-    })
+                return res.status(424).send("Falha ao buscar o pet")
+            } else {
+                return res.status(200).send(pet)
+            }
+        })
+    } 
 }
 
 const getPetBySex = (req, res) => {
