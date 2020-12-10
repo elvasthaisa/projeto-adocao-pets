@@ -1,11 +1,11 @@
 const pets = require('../models/pets');
 
 const getAllPets = (req, res) => {
-    pets.find(function(err, pet) {
+    pets.find((err, allPets) => {
         if(err) {
             return res.status(424).send({ message: err.message })
         }
-        return res.status(200).send(pet)
+        return res.status(200).send(allPets)
     })
 }
 
@@ -13,31 +13,53 @@ const getPetByName = (req, res) => {
     const petName = req.query.name;
     const tutorName = req.query.tutor;
 
-    const validateName = pets.find({ nome: petName });
-    const validateTutor = pets.find({ tutorTemporario: tutorName });
-
-    if (!validateName) {
-        return res.status(404).send("Não existe pet cadastrado com esse nome")
-    } 
-
-    if (!validateTutor) {
-        return res.status(404).send("Não existe pet cadastrado com esse tutor cadastrado")
-    }  
-
-    if (validateName && validateTutor) {
-        pets.find({ nome: petName, tutorTemporario: tutorName}, { _id: 0 }, (err, pet) => {
+    pets.find({ nome: petName, tutorTemporario: tutorName }, { _id: 0 }, (err, pet) => {
+        if (pet.length > 0) {
             if (err) {
-                return res.status(424).send("Falha ao buscar o pet")
-            } else {
-                return res.status(200).send(pet)
-            }
-        })
-    } 
+                return res.status(424).send("Não foi possível encontrar o pet")
+            } 
+            return res.status(200).send(pet)
+        }
+    })
+}
+
+const getPetBySex = (req, res) => {
+    const sex = req.query.sexo;
+
+    pets.find({ sexo: sex }, { _id: 0 }, (err, pet) => {
+        if (err) {
+            return res.status(424).send("Falha ao buscar o sexo do pet")
+        } 
+        return res.status(200).send(pet)
+    })
+}
+
+const getPetBySize = (req, res) => {
+    const size = req.query.porte;
+
+    pets.find({ porte: size }, { _id: 0 }, (err, pet) => {
+        if (err) {
+            return res.status(424).send("Falha ao buscar o porte do pet")
+        } 
+        return res.status(200).send(pet)
+    })
+}
+
+const getPetByType = (req, res) => {
+    const type = req.query.type;
+
+    pets.find({ tipoPet: type }, { _id: 0 }, (err, pet) => {
+        if (pet.length > 0) {
+            if (err) {
+                return res.status(424).send("Falha ao buscar o tipo do pet")
+            } 
+            return res.status(200).send(pet)
+        }
+    });
 }
 
 const createPet = (req, res) => {
     const pet = new pets(req.body);
-    console.log(pet)
     
     pet.save((err) => {
         if (err) {
@@ -68,7 +90,7 @@ const deletePet = (req, res) => {
     const petName = req.query.name;
     const tutorName = req.query.tutor;
 
-    pets.deleteOne({ nome: name, email: email }, (err, pet) => {
+    pets.deleteOne({ nome: petName, tutorTemporario: tutorName }, (err) => {
         if (err) {
             return res.status(424).send({ message: err.message });
         }
@@ -79,7 +101,10 @@ const deletePet = (req, res) => {
 module.exports = {
     getAllPets,
     getPetByName,
+    getPetBySex,
+    getPetBySize, 
+    getPetByType,
     createPet,
     updatePet,
-    deletePet
+    deletePet,
 }
