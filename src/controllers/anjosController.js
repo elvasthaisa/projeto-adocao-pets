@@ -1,21 +1,19 @@
-const anjos = require('../models/anjos');
+const anjos = require("../models/anjos");
 
 const getAllAngels = (req, res) => {
-    anjos.find(function(err, anjo) {
+    anjos.find((err, allAngels) => {
         if(err) {
             return res.status(424).send({ message: err.message })
         }
-        return res.status(200).send(anjo)
+        return res.status(200).send(allAngels)
     })
 }
 
 const getAngelByName = (req, res) => {
     const name = req.query.name;
-    const email = req.query.email;
-    console.log(name)
 
     if(name) {
-        anjos.find({nome: name, email: email}, { _id: 0 }, (err, anjo) => {
+        anjos.find({ nome: name }, { _id: 0 }, (err, anjo) => {
             if (err) {
                 return res.status(404).send("Não existe anjo cadastrado com esse nome")
             } 
@@ -24,9 +22,20 @@ const getAngelByName = (req, res) => {
     }
 }
 
+const getAngelByPetType = (req, res) => {
+    const petType = req.query.type;
+    
+    anjos.find({ tipoPet: petType }, { _id: 0 }, (err, anjo) => {
+        if (err) {
+            return res.status(404).send("Não existe anjo cadastrado com esse tipo de pet")
+        } 
+        return res.status(200).send(anjo)
+    })
+}
+
 const createAngel = (req, res) => {
     let anjo = new anjos(req.body)
-    anjo.save(function (err, obj) {
+    anjo.save((err, obj) => {
         if(err) {
             return res.status(424).send({ message: err.message })
         }
@@ -67,6 +76,7 @@ const deleteAngel = (req, res) => {
 module.exports = {
     getAllAngels,
     getAngelByName,
+    getAngelByPetType,
     createAngel,
     updateAngel,
     deleteAngel

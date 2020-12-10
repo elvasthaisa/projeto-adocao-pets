@@ -4,6 +4,7 @@ const controller = require('../controllers/anjosController');
 
 router.get('/', controller.getAllAngels);
 router.get('/user', controller.getAngelByName);
+router.get('/user/type', controller.getAngelByPetType);
 router.post('/', controller.createAngel);
 router.put('/user', controller.updateAngel);
 router.delete('/user', controller.deleteAngel);
