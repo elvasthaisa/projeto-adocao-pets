@@ -9,27 +9,22 @@ const getAllPets = (req, res) => {
     })
 }
 
-const getPetByName = (req, res) => {
+const getPetByName = async (req, res) => {
     const petName = req.query.name;
     const tutorName = req.query.tutor;
 
-    const invalidateName = pets.find({ nome: petName }, { $not: {is_agent: {$eq: true}}});
-    const invalidateTutor = pets.find({ tutorTemporario: tutorName }, { $not: {is_agent: {$eq: true}}});
+    const validateName = await pets.find({ nome: petName });
+    const validateTutor = await pets.find({ tutorTemporario: tutorName });
 
-    const typeName = typeof invalidateName;
-    const typeTutor = typeof invalidateTutor;
-
-    if (typeName == "object") {
-        console.log("não existe pet")
+    if (!validateName || validateName.length < 1) {
         return res.status(404).send("Não existe pet cadastrado com esse nome")
-    } 
+    }
 
-    if (typeTutor == "object") {
-        console.log("não existe tutor")
-        return res.status(404).send("Não existe pet cadastrado com esse tutor cadastrado")
-    }  
-
-    if (!invalidateName && !invalidateTutor) {
+    if (!validateTutor || validateTutor.length < 1) {
+        return res.status(404).send("Não existe pet cadastrado para esse tutor")
+    }
+    
+    if (validateName && validateTutor) {
         console.log("nome do pet e tutor validos")
         pets.find({ nome: petName, tutorTemporario: tutorName}, { _id: 0 }, (err, pet) => {
             if (err) {
