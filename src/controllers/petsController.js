@@ -1,4 +1,7 @@
 const pets = require('../models/pets');
+// const SECRET = process.env.SECRET;
+// const jwt = require('jsonwebtoken');
+// const bcrypt = require('bcrypt');
 
 const getAllPets = (req, res) => {
     pets.find((err, allPets) => {

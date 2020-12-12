@@ -11,6 +11,7 @@ const petsSchema = new mongoose.Schema({
     pelagem : { type: String },
     tutorTemporario : { type: String, required: true },
     emailTutor : { type: String, required: true },
+    senha : { type: String, required: true },
     telefoneTutor : { type: String, required: true },
     enderecoTutor : { type: String, required: true }
 }, {
