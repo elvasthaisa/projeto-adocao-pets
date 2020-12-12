@@ -91,8 +91,6 @@ const getPetByType = (req, res) => {
 }
 
 const createPet = (req, res) => {
-    authorization(req, res);
-
     const hashPassword = bcrypt.hashSync(req.body.senha, 10);
     req.body.senha = hashPassword;
 
@@ -139,13 +137,14 @@ const deletePet = (req, res) => {
 }
 
 const loginPet = (req, res) => {
-    anjos.findOne({ emailTutor: req.body.email }, (err, pet) => {
+    pets.findOne({ emailTutor: req.body.emailTutor }, (err, pet) => {
+
         if (err) {
             return res.status(500).send({ message: error.message });
         }
 
         if (!pet) {
-        return res.status(404).send(`Não existe pet cadastrado para o email ${req.body.email}`)
+        return res.status(404).send(`Não existe pet cadastrado para o email ${req.body.emailTutor}`)
         }
 
         const validPassword = bcrypt.compareSync(req.body.senha, pet.senha);
@@ -154,7 +153,7 @@ const loginPet = (req, res) => {
             return res.status(401).send('A senha está incorreta!')
         }
 
-        const token = jwt.sign({ emailTutor: req.body.email }, SECRET);
+        const token = jwt.sign({ emailTutor: req.body.emailTutor }, SECRET);
         return res.status(200).send(token);
     })
 }
