@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const authorization = (req, res) => {
-    const authHeader = request.get("authorization");
+    const authHeader = req.get("authorization");
 
     if (!authHeader) {
         return res.status(401).send("Você tem autorização?");
