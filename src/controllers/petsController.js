@@ -149,6 +149,10 @@ const loginPet = (req, res) => {
 
         const validPassword = bcrypt.compareSync(req.body.senha, pet.senha);
 
+        console.log(validPassword)
+        console.log(req.body.senha)
+        console.log(pet.senha)
+        
         if (!validPassword) {
             return res.status(401).send('A senha está incorreta!')
         }
