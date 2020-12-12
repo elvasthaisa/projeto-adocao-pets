@@ -1,7 +1,23 @@
 const pets = require('../models/pets');
-// const SECRET = process.env.SECRET;
-// const jwt = require('jsonwebtoken');
-// const bcrypt = require('bcrypt');
+const SECRET = process.env.SECRET;
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+
+const authorization = (req, res) => {
+    const authHeader = req.get("authorization");
+
+    if (!authHeader) {
+        return res.status(401).send("Você tem autorização?");
+    }
+
+    const token = authHeader.split(" ")[1];
+  
+    jwt.verify(token, SECRET, (err) => {
+        if (err) {
+            return res.status(403).send("Você não tem autorização para executar essa ação");
+        }
+    });
+};
 
 const getAllPets = (req, res) => {
     pets.find((err, allPets) => {
@@ -75,8 +91,12 @@ const getPetByType = (req, res) => {
 }
 
 const createPet = (req, res) => {
+    authorization(req, res);
+
+    const hashPassword = bcrypt.hashSync(req.body.senha, 10);
+    req.body.senha = hashPassword;
+
     const pet = new pets(req.body);
-    
     pet.save((err) => {
         if (err) {
             return res.status(424).send({ message: err.message })
@@ -86,6 +106,8 @@ const createPet = (req, res) => {
 }
 
 const updatePet = (req, res) => {
+    authorization(req, res);
+
     const petName = req.query.name;
     const tutorName = req.query.tutor; 
 
@@ -103,6 +125,8 @@ const updatePet = (req, res) => {
 }
 
 const deletePet = (req, res) => {
+    authorization(req, res);
+
     const petName = req.query.name;
     const tutorName = req.query.tutor;
 
@@ -111,6 +135,27 @@ const deletePet = (req, res) => {
             return res.status(424).send({ message: err.message });
         }
         return res.status(200).send('As informações do pet foram deletadas');
+    })
+}
+
+const loginPet = (req, res) => {
+    anjos.findOne({ emailTutor: req.body.email }, (err, pet) => {
+        if (err) {
+            return res.status(500).send({ message: error.message });
+        }
+
+        if (!pet) {
+        return res.status(404).send(`Não existe pet cadastrado para o email ${req.body.email}`)
+        }
+
+        const validPassword = bcrypt.compareSync(req.body.senha, pet.senha);
+
+        if (!validPassword) {
+            return res.status(401).send('A senha está incorreta!')
+        }
+
+        const token = jwt.sign({ emailTutor: req.body.email }, SECRET);
+        return res.status(200).send(token);
     })
 }
 
@@ -123,4 +168,5 @@ module.exports = {
     createPet,
     updatePet,
     deletePet,
+    loginPet
 }
