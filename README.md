@@ -1,5 +1,9 @@
 # Projeto Final da {Reprograma}: AnjoAumigo 
 
+<div align='center'>
+    <img alt="Banner do Anjo Aumigo com imagem de uma família abraçando um gato e um cachorro" src="./assets/banner.png">
+</div>
+
 O presente projeto é referente ao Bootcamp Back-End da Reprograma em parceria com o Porto Digital MINAS e tem como objetivo aplicar todo o conhecimento obtido através do curso.
 
 ### Motivação do tema escolhido
