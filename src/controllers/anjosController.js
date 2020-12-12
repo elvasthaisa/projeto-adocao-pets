@@ -62,8 +62,9 @@ const createAngel = (req, res) => {
     anjo.save((err, obj) => {
         if(err) {
             return res.status(424).send({ message: err.message })
+        } else {
+            return res.status(201).send(obj)
         }
-        return res.status(201).send(obj)
     })
 } 
 
