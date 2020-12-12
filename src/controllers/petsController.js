@@ -91,6 +91,8 @@ const getPetByType = (req, res) => {
 }
 
 const createPet = (req, res) => {
+    authorization(req, res);
+
     const hashPassword = bcrypt.hashSync(req.body.senha, 10);
     req.body.senha = hashPassword;
 
@@ -148,10 +150,6 @@ const loginPet = (req, res) => {
         }
 
         const validPassword = bcrypt.compareSync(req.body.senha, pet.senha);
-
-        console.log(validPassword)
-        console.log(req.body.senha)
-        console.log(pet.senha)
         
         if (!validPassword) {
             return res.status(401).send('A senha está incorreta!')
