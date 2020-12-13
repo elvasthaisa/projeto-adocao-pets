@@ -73,7 +73,7 @@ Localmente, a API está rodando em `http://localhost:8080/`.
 
 ## 🚦😇 Anjos
 
-| Método |  Rota                                        | Função                                       |                                                                                              |
+| Método |  Rota                                        | Função                                       |
 |:------:|----------------------------------------------| -------------------------------------------- |
 | GET | `/` | Acesso à página inicial da API AnjoAumigo |
 | GET | `/anjos` | Lista todos os anjos com interesse para adotar |
