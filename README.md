@@ -1,6 +1,6 @@
 <div align='center'>
     <h1>Projeto Final: AnjoAumigo 🐾</h1>
-    <img alt="Banner do Anjo Aumigo com imagem de uma família abraçando um gato e um cachorro" src="./assets/banner.png" width="550px">
+    <img alt="Banner do Anjo Aumigo com imagem de uma família abraçando um gato e um cachorro" src="./assets/banner.png" width="600px">
 </div>
 <div align='center'>
 <a href="https://github.com/elvasthaisa/projeto-adocao-pets/network"><img src = https://img.shields.io/github/forks/elvasthaisa/projeto-adocao-pets></a>
@@ -18,22 +18,24 @@ O presente projeto é referente ao Bootcamp Back-End da {Reprograma} em parceria
 - Como passei também pela experiência de cuidar de uma cachorrinha retirada das ruas antes de a mesma ir a um lar definitivo, senti a necessidade de criar uma API que facilitasse a conexão dos animais abandonados, e que estivessem em lares temporários, a possíveis tutores "anjos" que tenham a disponibilidade e o carinho de cuidar desses animais com muito amor.
 
 ## 💻 Tecnologias
-
+- [Controle de Versionamento (Git)](https://git-scm.com/)
 - [JavaScript](https://www.javascript.com/)
-- [Node](https://nodejs.org/en/)
-- [MongoDB](https://www.mongodb.com/)
-- [Heroku](https://dashboard.heroku.com/)
+- [Gerenciamento de pactotes (npm)](https://www.npmjs.com/) <img src="https://img.shields.io/badge/npm-6.14.8-pink">
+- [Node](https://nodejs.org/en/) <img src="https://img.shields.io/badge/NodeJs-339933.svg?style=flat&logo=node.js&logoColor=white"/> 
+- [MongoDB](https://www.mongodb.com/) <img src="https://img.shields.io/badge/MongoDB-444444.svg?style=flat&logo=mongoDB&logoColor=green">
+- [Heroku](https://dashboard.heroku.com/) <img src="https://img.shields.io/static/v1?label=deploy&message=heroku&color=pink&style=flat"/>
 
-Dependências 
-- [Express](https://expressjs.com/pt-br/)
-- [Mongoose](https://mongoosejs.com/)
-- [Bcrypt](https://www.npmjs.com/package/bcrypt)
-- [Dotenv-safe](https://www.npmjs.com/package/dotenv)
-- [Jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
-- [Nodemon](https://www.npmjs.com/package/nodemon)
+🔰 Dependências 
+- [Express](https://expressjs.com/pt-br/) <img alt="Express version" src="https://img.shields.io/badge/express-4.17.1-blue"/>
+- [Mongoose](https://mongoosejs.com/) <img alt="Mongoose version" src="https://img.shields.io/badge/mongoose-5.10.17-blue"/>
+- [Bcrypt](https://www.npmjs.com/package/bcrypt) <img alt="Bcrypt version" src="https://img.shields.io/badge/bcrypt-5.0.0-blue"/>
+- [Dotenv-safe](https://www.npmjs.com/package/dotenv) <img src="https://img.shields.io/static/v1?label=dotenv-safe&message=8.2.0&color=blue&style=flat&logo=mongoose"/>
+- [Jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) <img alt="jsonwebtoken version" src="https://img.shields.io/badge/jsonwebtoken-8.5.1-blue"/>
+- [Nodemon](https://www.npmjs.com/package/nodemon) <img alt="Nodemon version" src="https://img.shields.io/badge/nodemon-2.0.6-blue"/>
 
-Utilitários
-- Teste de API: [Postman](https://www.postman.com/downloads/)
+
+🔰 Utilitários
+- Teste de API: [Postman](https://www.postman.com/downloads/) <img src="https://img.shields.io/badge/-Postman-orange">
 - Ícones: [Emojis para Github](https://gist.github.com/rxaviers/7360908)
 - Paleta de cores: [Adobe Color](https://color.adobe.com/pt/)
 - Criação da arte: [Canva](https://www.canva.com/)
@@ -50,14 +52,14 @@ ____
 
 ## 🚦😇 Anjos
 
-| Método   |  Rota        | Função  |
-|:--------:|:-------------:| ------- |
+| Método |  Rota                              | Função                                               |
+|:------:|:--------------------------------------------:| ------------------------------------------ |
 | GET | `/anjos` | Lista todos os anjos com interesse para adotar |
 | POST | `/anjos` | Cadastra um novo anjo com interesse para adotar |
 | PUT | `/anjos/user?nome=Name&email=name@gmail.com` | Permite alteração de informações sobre o anjo |
 | DELETE | `/anjos/user?nome=Name&email=name@gmail.com` | Permite deletar informações sobre o anjo |
 
-## 🚦 Pets
+## 🚦🐶 Pets
 
 | Método | Rota                                    | Função                                    |
 |:------:|-----------------------------------------| ----------------------------------------- |
@@ -67,11 +69,16 @@ ____
 | DELETE | `/pets/pets?nome=Name&tipoPet=cachorro` | Permite deletar informações sobre o pet |
 
 ## 📃 Licença
-Esse repositório está licenciado pelo MIT License.
+Esse repositório está licenciado pelo **MIT License**.
 ____
 
 <p align="center">
-Developed with 💜 by Thaísa Elvas 
+    Developed with 💜 by <b>Thaísa Elvas</b> :octocat: 
 </p>
 <p align="center">
+    <a href="https://www.linkedin.com/in/thaisa-elvas/"><img src="https://img.shields.io/badge/-Thaísa_Elvas-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/thaisa-elvas/"/>
+    </a>
+    <a>
+    <a href="thaisaelvas@gmail.com"><img src="https://img.shields.io/badge/-thaisaelvas@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:marinamaredesign@gmail.com"/>
+    </a>
 </p>
