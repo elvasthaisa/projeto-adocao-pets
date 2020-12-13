@@ -53,8 +53,6 @@ const getAngelByPetType = (req, res) => {
 }
 
 const createAngel = (req, res) => {
-    authorization(req, res);
-
     const hashPassword = bcrypt.hashSync(req.body.senha, 10);
     req.body.senha = hashPassword;
 

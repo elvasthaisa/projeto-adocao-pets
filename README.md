@@ -67,17 +67,20 @@ Haverá duas entidades (schemas) na inserção de dados:
 
 ✅ Deletar o cadastro de um anjo/pet
 ____
-## 🚥 Rotas e features da API 
+## 🚥 Rotas e features da API AnjoAumigo
 
 Localmente, a API está rodando em `http://localhost:8080/`.
 
 ## 🚦😇 Anjos
 
-| Método |  Rota                                        | Função                                     |
-|:------:|----------------------------------------------| ------------------------------------------ |
+| Método |  Rota                                        | Função                                       |                                                                                              |
+|:------:|----------------------------------------------| -------------------------------------------- |
+| GET | `/` | Acesso à página inicial da API AnjoAumigo |
 | GET | `/anjos` | Lista todos os anjos com interesse para adotar |
+| GET | `/anjos/usertype?type=gato` | Lista todos os anjos que têm interesse em adotar determinado pet |
 | GET | `/anjos/user?name=Name&email=nome@gmail.com` | Lista o anjo com interesse para adotar |
 | POST | `/anjos` | Cadastra um novo anjo com interesse para adotar |
+| POST | `/anjos/login` | Acessa o banco de dados dos anjos |
 | PUT | `/anjos/user?nome=Name&email=name@gmail.com` | Permite alteração de informações sobre o anjo |
 | DELETE | `/anjos/user?nome=Name&email=name@gmail.com` | Permite deletar informações sobre o anjo |
 
@@ -85,8 +88,13 @@ Localmente, a API está rodando em `http://localhost:8080/`.
 
 | Método | Rota                                    | Função                                    |
 |:------:|-----------------------------------------| ----------------------------------------- |
-| GET | `/pets` | Lista todos os pets disponíveis a adoção |
+| GET | `/pets` | Lista todos os pets disponíveis a adoção | 
+| GET | `/pets/user?name=Name&tutor=TutorName` | Lista todos os pets disponíveis a adoção |
+| GET | `/pets/user/sex?sexo=macho` | Lista todos os pets do sexo determinado |
+| GET | `/pets/user/size?porte=pequeno` | Lista todos os pets do porte determinado |
+| GET | `/pets/type?=gato` | Lista todos os pets de determinado tipo |
 | POST | `/pets` | Cadastra um novo pet para adoção |
+| POST | `/pets/login` | Acessa o banco de dados dos anjos |
 | PUT | `/pets/pets?nome=Name&tipoPet=cachorro` | Permite alteração de informações sobre o pet |
 | DELETE | `/pets/pets?nome=Name&tipoPet=cachorro` | Permite deletar informações sobre o pet |
 

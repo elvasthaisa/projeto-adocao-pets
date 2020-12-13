@@ -91,8 +91,6 @@ const getPetByType = (req, res) => {
 }
 
 const createPet = (req, res) => {
-    authorization(req, res);
-
     const hashPassword = bcrypt.hashSync(req.body.senha, 10);
     req.body.senha = hashPassword;
 
